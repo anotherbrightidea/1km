@@ -1,0 +1,997 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "1km API",
+        "version": "1.0",
+        "description": "1km social app API"
+    },
+    "host": "www.1km.co.kr:8443",
+    "basePath": "/",
+    "schemes": [
+        "https"
+    ],
+    "parameters": {
+        "distance": {
+            "type": "integer",
+            "minimum": 0,
+            "name": "distance",
+            "required": false,
+            "in": "formData"
+        },
+        "feedType": {
+            "type": "string",
+            "name": "feedType",
+            "required": false,
+            "enum": [
+                "near",
+                "new",
+                "hot",
+                "today"
+            ],
+            "in": "formData"
+        },
+        "gender": {
+            "type": "number",
+            "name": "gender",
+            "required": false,
+            "enum": [
+                0,
+                1,
+                2
+            ],
+            "in": "formData"
+        },
+        "longitude": {
+            "type": "number",
+            "format": "float",
+            "name": "longitude",
+            "required": false,
+            "in": "formData"
+        },
+        "latitude": {
+            "type": "number",
+            "format": "float",
+            "name": "latitude",
+            "required": false,
+            "in": "formData"
+        },
+        "isTalkable": {
+            "type": "boolean",
+            "name": "isTalkable",
+            "required": false,
+            "in": "formData"
+        },
+        "minAge": {
+            "type": "integer",
+            "name": "minAge",
+            "minimum": 0,
+            "required": false,
+            "in": "formData"
+        },
+        "maxAge": {
+            "type": "integer",
+            "name": "maxAge",
+            "minimum": 0,
+            "required": false,
+            "in": "formData"
+        },
+        "minDistance": {
+            "type": "integer",
+            "name": "minDistance",
+            "minimum": 0,
+            "required": false,
+            "in": "formData"
+        },
+        "page": {
+            "type": "number",
+            "name": "page",
+            "minimum": 1,
+            "required": false,
+            "in": "formData"
+        },
+        "previewEnabled": {
+            "type": "string",
+            "name": "previewEnabled",
+            "required": false,
+            "enum": [
+                "Y",
+                "N"
+            ],
+            "in": "formData"
+        },
+        "telescopeLat": {
+            "type": "number",
+            "format": "float",
+            "name": "telescopeLat",
+            "required": false,
+            "in": "formData"
+        },
+        "telescopeLng": {
+            "type": "number",
+            "format": "float",
+            "name": "telescopeLng",
+            "required": false,
+            "in": "formData"
+        },
+        "time": {
+            "type": "integer",
+            "name": "time",
+            "minimum": 0,
+            "required": false,
+            "in": "formData"
+        },
+        "untilId": {
+            "type": "integer",
+            "name": "untilId",
+            "minimum": 0,
+            "required": false,
+            "in": "formData"
+        },
+        "sayId": {
+            "type": "integer",
+            "name": "sayId",
+            "required": true,
+            "in": "formData"
+        },
+        "userId": {
+            "type": "integer",
+            "name": "userId",
+            "required": true,
+            "in": "formData"
+        }
+    },
+    "paths": {
+        "/photo/list.do": {
+            "post": {
+                "summary": "Photo List",
+                "description": "",
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/distance"
+                    },
+                    {
+                        "$ref": "#/parameters/feedType"
+                    },
+                    {
+                        "$ref": "#/parameters/gender"
+                    },
+                    {
+                        "$ref": "#/parameters/longitude"
+                    },
+                    {
+                        "$ref": "#/parameters/latitude"
+                    },
+                    {
+                        "$ref": "#/parameters/isTalkable"
+                    },
+                    {
+                        "$ref": "#/parameters/minAge"
+                    },
+                    {
+                        "$ref": "#/parameters/maxAge"
+                    },
+                    {
+                        "$ref": "#/parameters/minDistance"
+                    },
+                    {
+                        "$ref": "#/parameters/page"
+                    },
+                    {
+                        "$ref": "#/parameters/previewEnabled"
+                    },
+                    {
+                        "$ref": "#/parameters/telescopeLat"
+                    },
+                    {
+                        "$ref": "#/parameters/telescopeLng"
+                    },
+                    {
+                        "$ref": "#/parameters/time"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "ok",
+                        "schema": {
+                            "$ref": "#/definitions/PhotoListResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/say/list.do": {
+            "post": {
+                "summary": "Say List",
+                "description": "",
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/distance"
+                    },
+                    {
+                        "$ref": "#/parameters/feedType"
+                    },
+                    {
+                        "$ref": "#/parameters/gender"
+                    },
+                    {
+                        "$ref": "#/parameters/longitude"
+                    },
+                    {
+                        "$ref": "#/parameters/latitude"
+                    },
+                    {
+                        "$ref": "#/parameters/isTalkable"
+                    },
+                    {
+                        "$ref": "#/parameters/minAge"
+                    },
+                    {
+                        "$ref": "#/parameters/maxAge"
+                    },
+                    {
+                        "$ref": "#/parameters/minDistance"
+                    },
+                    {
+                        "$ref": "#/parameters/untilId"
+                    },
+                    {
+                        "$ref": "#/parameters/previewEnabled"
+                    },
+                    {
+                        "$ref": "#/parameters/telescopeLat"
+                    },
+                    {
+                        "$ref": "#/parameters/telescopeLng"
+                    },
+                    {
+                        "$ref": "#/parameters/time"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "ok",
+                        "schema": {
+                            "$ref": "#/definitions/SayListResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/user/profile.do": {
+            "post": {
+                "summary": "User Profile",
+                "description": "",
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/userId"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "ok",
+                        "schema": {
+                            "$ref": "#/definitions/ProfileResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/user/image/list.do": {
+            "post": {
+                "summary": "User Image List",
+                "description": "",
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "name": "userId",
+                        "required": false,
+                        "in": "formData"
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "no response description was provided for this operation"
+                    }
+                }
+            }
+        },
+        "/say/detail.do": {
+            "post": {
+                "summary": "Say",
+                "description": "",
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/sayId"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "ok",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "total": {
+                                    "type": "integer",
+                                    "format": "int32"
+                                },
+                                "sinceId": {
+                                    "type": "integer",
+                                    "format": "int32"
+                                },
+                                "recentLikeUser": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "imageUrl": {
+                                                "type": "string"
+                                            },
+                                            "userName": {
+                                                "type": "string"
+                                            },
+                                            "userId": {
+                                                "type": "integer",
+                                                "format": "int32"
+                                            }
+                                        }
+                                    }
+                                },
+                                "hasReadMore": {
+                                    "type": "boolean"
+                                },
+                                "say": {
+                                    "type": "object",
+                                    "properties": {
+                                        "userPhoto": {
+                                            "type": "string"
+                                        },
+                                        "distance": {
+                                            "type": "string"
+                                        },
+                                        "orderId": {
+                                            "type": "integer",
+                                            "format": "int32"
+                                        },
+                                        "canLike": {
+                                            "type": "integer",
+                                            "format": "int32"
+                                        },
+                                        "sayType": {
+                                            "type": "integer",
+                                            "format": "int32"
+                                        },
+                                        "canWriteSayComment": {
+                                            "type": "boolean"
+                                        },
+                                        "sayUrl": {
+                                            "type": "string"
+                                        },
+                                        "isSharable": {
+                                            "type": "boolean"
+                                        },
+                                        "sayShareCount": {
+                                            "type": "integer",
+                                            "format": "int32"
+                                        },
+                                        "photoCount": {
+                                            "type": "integer",
+                                            "format": "int32"
+                                        },
+                                        "customTimeDiff": {
+                                            "type": "string"
+                                        },
+                                        "profileType": {
+                                            "type": "integer",
+                                            "format": "int32"
+                                        },
+                                        "highlightType": {
+                                            "type": "boolean"
+                                        },
+                                        "sayId": {
+                                            "type": "integer",
+                                            "format": "int32"
+                                        },
+                                        "modifyDate": {
+                                            "type": "string"
+                                        },
+                                        "like": {
+                                            "type": "integer",
+                                            "format": "int32"
+                                        },
+                                        "photoSmall": {
+                                            "type": "string"
+                                        },
+                                        "isLiked": {
+                                            "type": "boolean"
+                                        },
+                                        "sayPermUrl": {
+                                            "type": "string"
+                                        },
+                                        "userName": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "userId": {
+                                            "type": "integer",
+                                            "format": "int32"
+                                        },
+                                        "commentCount": {
+                                            "type": "integer",
+                                            "format": "int32"
+                                        },
+                                        "photoUrlList": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "registDate": {
+                                            "type": "string"
+                                        }
+                                    }
+                                },
+                                "untilId": {
+                                    "type": "integer",
+                                    "format": "int32"
+                                },
+                                "items": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "userPhoto": {
+                                                "type": "string"
+                                            },
+                                            "depth": {
+                                                "type": "integer",
+                                                "format": "int32"
+                                            },
+                                            "profileType": {
+                                                "type": "integer",
+                                                "format": "int32"
+                                            },
+                                            "userName": {
+                                                "type": "string"
+                                            },
+                                            "message": {
+                                                "type": "string"
+                                            },
+                                            "userId": {
+                                                "type": "integer",
+                                                "format": "int32"
+                                            },
+                                            "stickerUrl": {
+                                                "type": "string"
+                                            },
+                                            "sayCommentId": {
+                                                "type": "integer",
+                                                "format": "int32"
+                                            },
+                                            "registDate": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "LocationFields": {
+            "type": "object",
+            "properties": {
+                "telescopeLng": {
+                    "type": "number"
+                },
+                "telescopeLat": {
+                    "type": "number"
+                },
+                "lensPurchased": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "PaginationFields": {
+            "type": "object",
+            "properties": {
+                "sinceId": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "untilId": {
+                    "type": "integer",
+                    "format": "int32"
+                }
+            }
+        },
+        "ResultCountFields": {
+            "type": "object",
+            "properties": {
+                "resultCount": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "hasMore": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "PhotoListResponse": {
+            "type": "object",
+            "properties": {
+                "result": {
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/LocationFields"
+                        },
+                        {
+                            "$ref": "#/definitions/ResultCountFields"
+                        },
+                        {
+                            "properties": {
+                                "items": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/Photo"
+                                    }
+                                }
+                            }
+                        }
+                    ]
+                }
+            }
+        },
+        "SayListResponse": {
+            "type": "object",
+            "properties": {
+                "result": {
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/LocationFields"
+                        },
+                        {
+                            "$ref": "#/definitions/PaginationFields"
+                        },
+                        {
+                            "properties": {
+                                "items": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/Say"
+                                    }
+                                }
+                            }
+                        }
+                    ]
+                }
+            }
+        },
+        "Photo": {
+            "type": "object",
+            "properties": {
+                "birthday": {
+                    "type": "string"
+                },
+                "photoList": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "distance": {
+                    "type": "string"
+                },
+                "sex": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "distanceColor": {
+                    "type": "string"
+                },
+                "userDistance": {
+                    "type": "string"
+                },
+                "lastLoginDate": {
+                    "type": "string"
+                },
+                "userId": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "photoCount": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "customTimeDiff": {
+                    "type": "string"
+                },
+                "smallImagePath": {
+                    "type": "string"
+                },
+                "profileType": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "timeColor": {
+                    "type": "string"
+                },
+                "isShowBlocked": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "nickname": {
+                    "type": "string"
+                },
+                "userLastDate": {
+                    "type": "string"
+                },
+                "fieldMode": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "userOnoff": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "age": {
+                    "type": "integer",
+                    "format": "int32"
+                }
+            }
+        },
+        "Say": {
+            "type": "object",
+            "properties": {
+                "userPhoto": {
+                    "type": "string"
+                },
+                "sayId": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "distance": {
+                    "type": "string"
+                },
+                "modifyDate": {
+                    "type": "string"
+                },
+                "orderId": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "like": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "canLike": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "sayType": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "isLiked": {
+                    "type": "boolean"
+                },
+                "canWriteSayComment": {
+                    "type": "boolean"
+                },
+                "sayUrl": {
+                    "type": "string"
+                },
+                "sayPermUrl": {
+                    "type": "string"
+                },
+                "isSharable": {
+                    "type": "boolean"
+                },
+                "userName": {
+                    "type": "string"
+                },
+                "message": {
+                    "type": "string"
+                },
+                "sayShareCount": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "userId": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "photoCount": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "commentCount": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "customTimeDiff": {
+                    "type": "string"
+                },
+                "profileType": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "highlightType": {
+                    "type": "boolean"
+                },
+                "registDate": {
+                    "type": "string"
+                }
+            }
+        },
+        "SayDetail": {
+            "allOf": [
+                {
+                    "$ref": "#/definitions/Say"
+                },
+                {
+                    "properties": {
+                        "photoUrlList": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        "ClubInfo": {
+            "type": "object",
+            "properties": {
+                "expireAt": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "imageThumbnailUrl": {
+                    "type": "string"
+                },
+                "isExperience": {
+                    "type": "string"
+                },
+                "isValid": {
+                    "type": "string"
+                },
+                "jiverChatUrl": {
+                    "type": "string"
+                },
+                "memberType": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "talkcloudRoomId": {
+                    "type": "string"
+                }
+            }
+        },
+        "ProfileResponse": {
+            "type": "object",
+            "properties": {
+                "result": {
+                    "$ref": "#/definitions/Profile"
+                }
+            }
+        },
+        "Profile": {
+            "type": "object",
+            "properties": {
+                "birthday": {
+                    "type": "string"
+                },
+                "isBlock": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "gender": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "distance": {
+                    "type": "string"
+                },
+                "profileUpgraded": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "todayVisit": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "language": {
+                    "type": "object",
+                    "properties": {
+                        "code": {
+                            "type": "string"
+                        },
+                        "name": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "lastLoginDate": {
+                    "type": "string"
+                },
+                "declareFlag": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "recentSayList": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/SayDetail"
+                    }
+                },
+                "hideSayHistory": {
+                    "type": "string",
+                    "enum": [
+                        "Y",
+                        "N"
+                    ]
+                },
+                "giftNTokenUrl": {
+                    "type": "string"
+                },
+                "score": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "meetupClubInfo": {
+                    "type": "array",
+                    "items": {
+                        "type": "object"
+                    }
+                },
+                "customTimeDiff": {
+                    "type": "string"
+                },
+                "smallImagePath": {
+                    "type": "string"
+                },
+                "joinDate": {
+                    "type": "string"
+                },
+                "profileType": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "favorType": {
+                    "type": "string"
+                },
+                "intro": {
+                    "type": "string"
+                },
+                "totalVisit": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "totalVisitText": {
+                    "type": "string"
+                },
+                "relationship": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "authType": {
+                    "type": "string"
+                },
+                "clubInfo": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/ClubInfo"
+                    }
+                },
+                "hometown": {
+                    "type": "string"
+                },
+                "hideChatBtn": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "likeCountToday": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "ignoreAction": {
+                    "type": "boolean"
+                },
+                "sayCount": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "isLiked": {
+                    "type": "integer",
+                    "enum": [
+                        0,
+                        1
+                    ]
+                },
+                "say": {
+                    "$ref": "#/definitions/SayDetail"
+                },
+                "message": {
+                    "type": "string"
+                },
+                "userId": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "giftNToken": {
+                    "type": "string"
+                },
+                "likeCountText": {
+                    "type": "string"
+                },
+                "favoriteCountText": {
+                    "type": "string"
+                },
+                "canChat": {
+                    "type": "integer",
+                    "enum": [
+                        0,
+                        1
+                    ]
+                },
+                "favoriteCountToday": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "clubCount": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "askActive": {
+                    "type": "boolean"
+                },
+                "age": {
+                    "type": "integer",
+                    "format": "int32",
+                    "minimum": 0
+                },
+                "isFavorite": {
+                    "type": "integer",
+                    "enum": [
+                        0,
+                        1
+                    ]
+                },
+                "favoriteCount": {
+                    "type": "integer",
+                    "format": "int32"
+                }
+            }
+        }
+    }
+}
